@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body {
+  font-family: 'NanumSquareRound', sans-serif;
+}
+
+
+td, th{
+    text-align: center;
+}

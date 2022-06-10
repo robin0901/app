@@ -8,5 +8,5 @@ document.getElementById("resultbtn").onclick = function(){
             }
         }
     }
-    window.location = `checklist_result.html?result=${totalscore}`;
+    window.location = `/checklist_result?result=${totalscore}`;
 }

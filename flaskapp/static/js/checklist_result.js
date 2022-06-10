@@ -12,7 +12,7 @@ window.onload = function WindowLoad(event) {
     let intResult = parseInt(result);
     var treeHtml = "";
     for(var i=0; i<intResult; i++){
-        treeHtml += `<img src="image/tree.png" width="64" height="64">`;
+        treeHtml += `<img src="/static/image/tree.png" width="64" height="64">`;
     }
     document.getElementById("trees").innerHTML = treeHtml;
 }
