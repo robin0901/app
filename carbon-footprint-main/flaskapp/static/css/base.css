@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+body {
+  font-family: 'NanumSquareRound', sans-serif;
+}
+
+.center {
+    text-align: center;
+}
+
+.dis_none { display: none; }
+
+.txt-green {
+    color: green;
+}
+
+footer {
+    background-color: white;
+}
+
+#resultbtn { width: 100%; }

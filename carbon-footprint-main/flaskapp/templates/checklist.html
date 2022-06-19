@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/checklist.css">
+{% endblock %}
+
+{% block title %} 환경 점수 체크리스트 {% endblock %}
+
+{% block content %}
+    <div class="row mt-3">
+        <h1>환경 점수 체크리스트</h1>
+    </div>
+
+    <div class="row mt-3">
+        <label for="q1yes">1. 오늘의 물 탄소 발자국 값을 기록하셨나요?</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q1" id="q1yes" value="1">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="네" disabled>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q1" id="q1no" value="0">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="아니요" disabled>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <label for="q2radio1">2. 오늘 기록한 물 탄소 발자국 값이 평균값과 비교했을 때 어떤가요?</label>
+        <label for="q2radio1" class="mb-1 description">오늘의 평균 탄소 발자국 값은 <mark>{{ avg_score }}</mark>에요.</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q2" id="q2radio1" value="1">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="평균값보다 낮다" disabled>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q2" id="q2radio2" value="0">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="평균값과 같다" disabled>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q2" id="q2radio3" value="-1">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="평균값보다 높다" disabled>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <label for="q3yes">3. 오늘 무라벨이나 저탄소 인증마크 생수 제품을 구입하셨나요?</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q3" id="q3yes" value="1">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="네" disabled>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q3" id="q3no" value="0">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="아니요" disabled>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <label for="q4yes">4. 오늘 수돗물을 마신 적이 있나요?</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q4" id="q4yes" value="1">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="네" disabled>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q4" id="q4no" value="0">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="아니요" disabled>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <label for="q5yes">5. 오늘 종이컵을 사용하셨나요?</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q5" id="q5yes" value="-1">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="네" disabled>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q5" id="q5no" value="0">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="아니요" disabled>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <label for="q6yes">6. 현재 텀블러를 사용하고 계신가요?</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q6" id="q6yes" value="1">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="네" disabled>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <span>
+                        <input type="radio" name="q6" id="q6no" value="0">
+                    </span>
+                </div>
+            </div>
+            <input type="text" class="form-control" value="아니요" disabled>
+        </div>
+    </div>
+    <button type="button" class="btn btn-success mt-3" id="resultbtn">계산하기</button>
+{% endblock %}
+
+{% block navbar %}
+    <footer>
+        <div class="row fixed-bottom">
+            <button id="nav-footprint" class="btn col-4 center selected">
+                <img src="/static/image/footprint.svg" width="25px" height="25px">
+                <div>발자국 기록</div>
+            </button>
+            <button id="nav-checklist" class="btn col-4 center">
+                <img src="/static/image/checklist_green.svg" width="25px" height="25px">
+                <div class="txt-green">체크리스트</div>
+            </button>
+            <button id="nav-ranking" class="btn col-4 center">
+                <img src="/static/image/rank.svg" width="25px" height="25px">
+                <div>랭킹</div>
+            </button>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/checklist.js"></script>
+{% endblock %}

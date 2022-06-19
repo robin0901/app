@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/checklist.css">
+{% endblock %}
+
+{% block title %} 환경 점수 체크리스트 {% endblock %}
+
+{% block content %}
+    <div class="row mt-3">
+        <h1>환경 점수 체크리스트</h1>
+    </div>
+    <div id="final_score" class="row mt-3"></div>
+    <div class="row mt-3">
+        <div id="trees"></div>
+    </div>
+{% endblock %}
+
+{% block navbar %}
+    <footer>
+        <div class="row fixed-bottom">
+            <button id="nav-footprint" class="btn col-4 center selected">
+                <img src="/static/image/footprint.svg" width="25px" height="25px">
+                <div>발자국 기록</div>
+            </button>
+            <button id="nav-checklist" class="btn col-4 center">
+                <img src="/static/image/checklist_green.svg" width="25px" height="25px">
+                <div class="txt-green">체크리스트</div>
+            </button>
+            <button id="nav-ranking" class="btn col-4 center">
+                <img src="/static/image/rank.svg" width="25px" height="25px">
+                <div>랭킹</div>
+            </button>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/checklist_result.js"></script>
+{% endblock %}

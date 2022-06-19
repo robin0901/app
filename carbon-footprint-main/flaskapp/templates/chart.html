@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/ranking.css">
+{% endblock %}
+
+{% block title %} 탄소 발자국 분석 {% endblock %}
+
+{% block content %}
+    <div class="row mt-3">
+        <h1>탄소 발자국 분석</h1>
+    </div>
+
+    <div class="row mt-3">
+        {{ username }}님의 탄소 발자국 분석 결과에요.
+    </div>
+
+    <div class="row mt-3">
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+    </div>
+
+    <div class="row mt-3">
+        <div>최근 기록한 탄소 발자국 점수에요. (최대 7일)</div>
+        <div>탄소 발자국 점수가 낮을수록 좋은 점수랍니다.</div>
+        <div><mark>{{ best_date }}일</mark>에 가장 높은 점수인 <mark>{{ best_score }}점</mark>을 기록했어요.</div>
+    </div>
+
+    <div class="chart-data mt-3">
+        <div class="dis_none" id="x-values" value="{{ x_values }}">{{ x_values }}</div>
+        <div class="dis_none" id="y-values" value="{{ y_values }}">{{ y_values }}</div>
+    </div>
+{% endblock %}
+
+{% block navbar %}
+    <footer>
+        <div class="row fixed-bottom">
+            <button id="nav-footprint" class="btn col-4 center selected">
+                <img src="/static/image/footprint.svg" width="25px" height="25px">
+                <div>발자국 기록</div>
+            </button>
+            <button id="nav-checklist" class="btn col-4 center">
+                <img src="/static/image/checklist.svg" width="25px" height="25px">
+                <div>체크리스트</div>
+            </button>
+            <button id="nav-ranking" class="btn col-4 center">
+                <img src="/static/image/rank_green.svg" width="25px" height="25px">
+                <div class="txt-green">랭킹</div>
+            </button>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/chart.js"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+        var xValues = $('#x-values').text().slice(1, $('#x-values').text().length - 1).split(',');
+        var yValues = $('#y-values').text().slice(1, $('#y-values').text().length - 1).split(',');
+
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: "rgba(182,219,121,0.8)",
+              borderColor: "rgba(69,139,0,1.0)",
+              data: yValues
+            }]
+          }, options: {
+            legend: {
+              display: false,
+            },
+            tooltips: {
+              enabled: false,
+            },
+            layout: {
+                padding: {
+                    left: 10
+                }
+            },
+          },
+        });
+    </script>
+{% endblock %}
